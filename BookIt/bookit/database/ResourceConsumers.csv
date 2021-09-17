@@ -1,0 +1,4 @@
+﻿RCName,RCEmail,RCPassword,permitHour,permitHour_nextMonth,RCPhone,RCIsActive,id
+rc001,rc001@gmail.com,rc001,10,10,1001,1,3001
+rc002,rc002@gmail.com,rc002,10,10,1002,1,3002
+rc003,rc003@gmail.com,rc003,10,10,1003,1,3003

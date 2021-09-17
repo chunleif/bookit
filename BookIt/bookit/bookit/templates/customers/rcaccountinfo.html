@@ -1,0 +1,431 @@
+<!--individual webpage for resource users-->
+{% extends 'customers/accountinfo.html' %}
+
+{% block secondarea %}
+    Order
+{% endblock %}
+
+{% block js %}
+<!--js file-->
+    {% load static %}
+    <script type="text/javascript" src="{% static "js/jquery-1.11.3.js" %}"></script>
+    <script src="{% static "js/index.js" %}"></script>
+{% endblock %}
+{% block account %}
+
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col">
+                <!--find wrong operation-->
+                {% if message %}
+                    <div class="alert-warning">{{ message }}</div>
+                {% endif %}
+                <br>
+                <div class="input-group mb-3">
+                <!--modify the information webpage-->
+                    <form action="/customer/changeinfopage/">
+                        <h6>Username: </h6>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" aria-label="username"
+                                   aria-describedby="button-addon2" readonly="readonly"
+                                   placeholder="{{ user.uname }}"><input type="hidden" name="whatchange"
+                                                                         value="rc-name">
+                            <button class="btn btn-outline-secondary" type="submit">&nbsp;&nbsp;&nbsp;Change Name&nbsp;&nbsp;&nbsp;</button>
+                        </div>
+                    </form>
+                </div>
+                <h6>Email address: </h6>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="{{ user.uemail }}" aria-label="email"
+                           aria-describedby="button-addon2" readonly="readonly">
+                </div>
+                <form action="/customer/changeinfopage/">
+                    <h6>Password: </h6>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="**********" aria-label="password"
+                               aria-describedby="button-addon2" readonly="readonly" name="whatchange"
+                               value="rc-password">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-rc-password">
+                            Change Password
+                        </button>
+                    </div>
+                </form>
+
+
+                <form action="/customer/changeinfopage/">
+                    <h6>Phone Number: </h6>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="{{ user.uphone }}" aria-label="email"
+                               aria-describedby="button-addon2" readonly="readonly"><input type="hidden"
+                                                                                           name="whatchange"
+                                                                                           value="rc-phone">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-rp-phone">&nbsp;&nbsp;Change
+                            Phone&nbsp;&nbsp;&nbsp;
+                        </button>
+                    </div>
+                </form>
+
+                <h6>Remaining available time of this month: </h6>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="{{ user.upermithour }} permit-hour available"
+                           aria-label="email" aria-describedby="button-addon2" readonly="readonly">
+                </div>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+
+    </div>
+
+{% endblock %}
+<!--show orders of the resource user-->
+{% block order %}
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+        <!--finished orders-->
+            <button class="nav-link {{ active_page_finished }}" id="home-tab" data-bs-toggle="tab"
+                    data-bs-target="#home1" type="button"
+                    role="tab" aria-controls="home1" aria-selected="true">Finished Order
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <!--in process orders-->
+            <button class="nav-link {{ active_page_current }}" id="profile-tab" data-bs-toggle="tab"
+                    data-bs-target="#profile1" type="button"
+                    role="tab" aria-controls="profile1" aria-selected="false">
+                Current Order
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <!--future orders-->
+            <button class="nav-link {{ active_page_future }}" id="contact-tab" data-bs-toggle="tab"
+                    data-bs-target="#contact1" type="button"
+                    role="tab" aria-controls="contact1" aria-selected="false">Future Order
+            </button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show {{ active_page_finished }}" id="home1" role="tabpanel"
+             aria-labelledby="home-tab">
+            <div class="container">
+            <!--show the information of finished orders-->
+                {% for finished in finished_page %}
+                    <div class="card mb-3" style="min-height: 240px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                {% if finished.RCId.isImage == 1 %}
+                                <img src='{% static "image/" %}{{ finished.CId }}.png' width="500px" height="400px" class="img-fluid rounded-start" alt="...">
+                                {% else %}
+                                <img src='{% static "image/" %}default.png' width="500px" height="400px" class="img-fluid rounded-start" alt="...">
+                                {% endif %}
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body" id = "star">
+                               
+
+                                    <h5 class="card-title">Order id: {{ finished.id }}</h5>
+                                    {% for k,v in finished.RCId.items %}
+                                        {% if k == 'isImage' %}
+                                    {% else %}
+                                        <p class="card-text">{{ k }} {{ v }}</p>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <p class="card-text"><small class="text-muted">Your Score
+                                        : {{ finished.OrderScore }}</small></p>
+                                    <p class="card-text"><small class="text-muted">Schedule : <br>
+                                        {% for k,v in finished.ScheduleTime.items %}
+                                            <mark>Date:</mark><em>{{ k }} </em><mark>Hour:</mark><em>
+                                        {% for h in v %}
+                                            {{ h }}:00-{{ h|add:1 }}:00
+                                        {% endfor %}
+                                            </em><br>
+                                    {% endfor %}
+
+                                    </small></p>
+                                <!--score the finished order-->
+                                {% if finished.OrderStatus == 0 %}
+                                    <button type="button" class="btn btn-primary" onclick="star({{ finished.id }})">Score Now</button>
+                                {% else %}
+                                    <button type="button" class="btn btn-secondary btn-lg disabled">Scored</button>
+                                {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="container">
+            <!--pagination-->
+
+                <nav aria-label="Page navigation example">
+
+                    <ul class="pagination justify-content-center">
+                        {% if finished_page.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="?page={{ finished_page.previous_page_number }}&active_status=finished"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">Previous</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="disabled page-link">
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">Previous</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% for num in finished_pagerange %}
+                            {% if num == currentpage_finished %}
+                                <li class="page-item active"><a class="page-link"
+                                                                href="?page={{ num }}&active_status=finished">{{ num }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link"
+                                                         href="?page={{ num }}&active_status=finished">{{ num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if finished_page.has_next %}
+                            <li class="page-link">
+                                <a href="?page={{ finished_page.next_page_number }}&active_status=finished"
+                                   aria-label="Next">
+                                    <span aria-hidden="true">Next</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                </nav>
+
+            </div>
+
+
+        </div>
+        <div class="tab-pane fade show {{ active_page_current }}" id="profile1" role="tabpanel"
+             aria-labelledby="profile-tab">
+
+            <div class="container">
+            <!--show the information of in process orders-->
+                {% for current in current_page %}
+                    <div class="card mb-3" style="min-height: 240px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                            {% if current.RCId.isIm1age == 1 %}
+                                <img src='{% static "image/" %}{{ current.CId }}.png' width="500px" height="400px" class="img-fluid rounded-start" alt="...">
+                                {% else %}
+                                <img src='{% static "image/" %}default.png' width="500px" height="400px" class="img-fluid rounded-start" alt="...">
+                                {% endif %}
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+
+                                    <h5 class="card-title">Order id: {{ current.id }}</h5>
+                                    {% for k,v in current.RCId.items %}
+                                        {% if k == 'isImage' %}
+                                    {% else %}
+                                        <p class="card-text">{{ k }} {{ v }}</p>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <p class="card-text"><small class="text-muted">Schedule : <br>
+
+                                    {% for k,v in current.ScheduleTime.items %}
+                                        <mark>Date:</mark><em>{{ k }}</em> <mark>Hour:</mark>
+                                        <em>
+                                        {% for h in v %}
+                                            {{ h }}:00-{{ h|add:1 }}:00
+                                        {% endfor %}
+                                        </em>
+                                        <br>
+                                    {% endfor %}
+                                    </small></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="container">
+            <!--pagination-->
+
+                <nav aria-label="Page navigation example">
+
+                    <ul class="pagination justify-content-center">
+                        {% if fcurrent_page.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="?page={{ current_page.previous_page_number }}&active_status=current"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">Previous</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="disabled page-link">
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">Previous</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% for num in current_pagerange %}
+                            {% if num == currentpage_current %}
+                                <li class="page-item active"><a class="page-link"
+                                                                href="?page={{ num }}&active_status=current">{{ num }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link"
+                                                         href="?page={{ num }}&active_status=current">{{ num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if current_page.has_next %}
+                            <li class="page-link">
+                                <a href="?page={{ current_page.next_page_number }}&active_status=current"
+                                   aria-label="Next">
+                                    <span aria-hidden="true">Next</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                </nav>
+
+            </div>
+
+
+        </div>
+        <div class="tab-pane fade show {{ active_page_future }}" id="contact1" role="tabpanel"
+             aria-labelledby="contact-tab">
+
+            <div class="container">
+            <!--show the information of future orders-->
+                {% for future in future_page %}
+                    <div class="card mb-3" style="min-height: 240px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                            {% if future.RCId.isImage == 1 %}
+                                <img src='{% static "image/" %}{{ future.CId }}.png' width="500px" height="400px" class="img-fluid rounded-start" alt="...">
+                                
+                                {% else %}
+                                <img src='{% static "image/" %}default.png' width="500px" height="400px" class="img-fluid rounded-start" alt="...">
+                                {% endif %}
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+
+                                    <h5 class="card-title">Order id: {{ future.id }}</h5>
+                                    {% for k,v in future.RCId.items %}
+                                    {% if k == 'isImage' %}
+                                    {% else %}
+                                        <p class="card-text">{{ k }} {{ v }}</p>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <p class="card-text"><small class="text-muted">Schedule : <br>
+
+                                    {% for k,v in future.ScheduleTime.items %}
+                                        <mark>Date:</mark><em>{{ k }}</em> <mark>Hour:</mark>
+                                        <em>
+                                        {% for h in v %}
+                                            {{ h }}:00-{{ h|add:1 }}:00
+                                        {% endfor %}
+                                    {% endfor %}</em>
+                                        <br>
+                                    </small></p>
+
+                                    <!--cancel the future order-->
+                                    <button onclick="cancelorder({{ future.id }})" type="button" class="btn btn-primary"  >Cancel Order
+                                    </button>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="container">
+               <!--pagination-->
+                <nav aria-label="Page navigation example">
+
+                    <ul class="pagination justify-content-center">
+                        {% if future_page.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="?page={{ future_page.previous_page_number }}&active_status=future"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">Previous</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="disabled page-link">
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">Previous</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% for num in future_pagerange %}
+                            {% if num == currentpage_future %}
+                                <li class="page-item active"><a class="page-link"
+                                                                href="?page={{ num }}&active_status=future">{{ num }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link"
+                                                         href="?page={{ num }}&active_status=future">{{ num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if future_page.has_next %}
+                            <li class="page-link">
+                                <a href="?page={{ future_page.next_page_number }}&active_status=future"
+                                   aria-label="Next">
+                                    <span aria-hidden="true">Next</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                </nav>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+{% block indexjs %}
+<!--cancel order function-->
+    <script>
+        function cancelorder(event) {
+            let OId = event;
+            if (window.confirm('Do You Really Want to Cancel This Order?')) {
+                $.get('/customer/cancelorder/', {OId: OId, active_status: 'future'}, alert("Order Has Been Deleted!"))
+                window.location.replace('/customer/accountinfo/?page=1&active_status=future')
+            } else {
+                alert('Operation Canceled!');
+            }
+        }
+
+// score operation (score:1,2,3,4,5 5 is the highest score)
+        function star(event){
+            let O_star = event;
+            var score = prompt("Score Here!\nYour Can Only Input A Score In [1, 2, 3, 4, 5].(The larger the number,the more satisfied)", 5);
+            if (score !=null && score!=""){
+                if(score==1|score==2|score==3|score==4|score==5){
+
+                    $.get('/customer/scorecourt/', {O_star: O_star, active_status: 'finished', score: score}, alert("Order Has Been Scored!"))
+                    window.location.replace('/customer/accountinfo/?page=1&active_status=finished')
+
+                }else {
+                    alert("Wrong Input, Request Denied!");
+                }
+
+            }
+        }
+
+    </script>
+{% endblock %}

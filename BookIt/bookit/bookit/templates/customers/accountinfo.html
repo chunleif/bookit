@@ -1,0 +1,48 @@
+<!--individual center web (parent web)
+  resource provide :rpaccountinfo.html
+  resource user: rcacountinfo.html
+  
+-->
+
+{% extends 'customers/index.html' %}
+
+{% block title %}AccountInfo{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link {{ active_default }}" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                        role="tab" aria-controls="home" aria-selected="true">Account settings
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link {{ active_page }}{{ active_addcourt }}" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                        role="tab" aria-controls="profile" aria-selected="false">
+                    {% block secondarea %}{% endblock %}</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show {{ active_default }}" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                {% block account %}
+
+                {% endblock %}
+
+            </div>
+            <div class="tab-pane fade show {{ active_page }}{{ active_addcourt }}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                {% block order %}{% endblock %}
+                {% block court %}{% endblock %}
+
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                ...
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

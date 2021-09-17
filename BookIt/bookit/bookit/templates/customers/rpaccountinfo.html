@@ -1,0 +1,193 @@
+<!--individual center webpage for resource providers-->
+{% extends 'customers/accountinfo.html' %}
+
+{% block secondarea %}
+    Court Manage
+{% endblock %}
+
+{% block account %}
+
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col">
+            <!--find wrong operation-->
+                {% if message %}
+                    <div class="alert-warning">{{ message }}</div>
+                {% endif %}
+                <br>
+                <!--modify information webpage-->
+                <form action="/customer/changeinfopage/">
+                    <h6>Username: </h6>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="{{ user.uname }}" aria-label="username"
+                               aria-describedby="button-addon2" readonly="readonly"><input type="hidden"
+                                                                                           name="whatchange"
+                                                                                           value="rp-name">
+                        <button class="btn btn-outline-secondary" type="submit">&nbsp;&nbsp;&nbsp;Change Name&nbsp;&nbsp;&nbsp;</button>
+                    </div>
+                </form>
+
+                <h6>Email address: </h6>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="{{ user.uemail }}" aria-label="email"
+                           aria-describedby="button-addon2" readonly="readonly">
+                </div>
+                <form action="/customer/changeinfopage/">
+                    <h6>Password: </h6>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="**********" aria-label="password"
+                               aria-describedby="button-addon2" readonly="readonly" name="whatchange"
+                               value="rp-password">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-rp-password">Change
+                            Password
+                        </button>
+                    </div>
+                </form>
+                <form action="/customer/changeinfopage/">
+                    <h6>Phone Number: </h6>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="{{ user.uphone }}" aria-label="email"
+                               aria-describedby="button-addon2" readonly="readonly"><input type="hidden"
+                                                                                           name="whatchange"
+                                                                                           value="rp-phone">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-rp-phone">&nbsp;&nbsp;Change
+                            Phone&nbsp;&nbsp;&nbsp;
+                        </button>
+                    </div>
+                </form>
+                <form action="/customer/changeinfopage/">
+                    <h6>Resource Provider Introduction: </h6>
+                    <div class="input-group mb-3">
+                        <textarea type="text" style="width: 20px;height: 100px;" class="form-control"
+                                  placeholder="{{ user.uintro }}" aria-label="email" aria-describedby="button-addon2"
+                                  readonly="readonly"></textarea><input type="hidden" name="whatchange"
+                                                                        value="rp-intro">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-rp-intro">&nbsp;&nbsp;&nbsp;&nbsp;Change
+                            Intro&nbsp;&nbsp;&nbsp;
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block court %}
+<!--show all resource of the resource provider and add new resource-->
+    <div class="container" align="right">
+        <br>
+        {% if message1 != '' %}
+            <div class="alert-warning">{{ message1 }}</div>
+        {% endif %}
+        <a href="/customer/toaddnewcourt/">
+        <!--add new venue operation-->
+            <button class="btn btn-info" type="button" style="background-color:#666;border:None;">Add New Venue Here!</button>
+        </a>
+
+    </div>
+    <br>
+    <div class="container">
+        {% for c in page %}
+            <div class="card mb-3" style="min-height: 240px;">
+                <div class="row g-0">
+                    {% load static %}
+                    <div class="col-md-4" >
+                    <!--default image or the image that the resource provider upload-->
+                        {% if c.isImage == 1 %}
+                        <img src="{% static "image/" %}{{ c.id }}.png?v={{ v }}" width="500px" height="400px" class="img-fluid rounded-start" alt="...">
+                        {% else %}
+                            
+                            <img src="{% static "image/" %}default.png?v={{ v }}" width="500px" height="400px" class="img-fluid rounded-start" alt="...">
+
+                        {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                    <!--show the information of the venue-->
+                        <div class="card-body">
+                       
+                            <h5 class="card-title">Venue Name : {{ c.CName }}</h5>
+                            <p class="card-text">Venue Type : {{ c.CType }}</p>
+                            <p class="card-text">Venue Address : {{ c.CAddress }}</p>
+
+                            <p class="card-text">Venue Score :
+                                <mark>{{ c.CStar }}</mark>
+                            </p>
+                            <p class="card-text">Venue Introduction : {{ c.CIntro }}</p>
+
+                           <!--upload background image operation-->
+                            <form action="/customer/uploadimage/?v={{ v }}&status=upload" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <p class="card-text text-muted" style="font-style:italic;">Upload Your Venue Background Image Below</p>
+
+
+                                    <input name="CId" hidden="hidden" value="{{ c.id }}">
+                                    <input type="file" name="image">
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        Upload</button>
+
+
+
+
+
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    <div class="container">
+    <!--pagination-->
+
+        <nav aria-label="Page navigation example">
+
+            <ul class="pagination justify-content-center">
+                {% if page.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="?page={{ page.previous_page_number }}&status=court"
+                           aria-label="Previous">
+                            <span aria-hidden="true">Previous</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="disabled page-link">
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">Previous</span>
+                        </a>
+                    </li>
+                {% endif %}
+                {% for num in pagerange %}
+                    {% if num == currentpage %}
+                        <li class="page-item active"><a class="page-link"
+                                                        href="?page={{ num }}&status=court">{{ num }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link"
+                                                 href="?page={{ num }}&status=court">{{ num }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if page.has_next %}
+                    <li class="page-link">
+                        <a href="?page={{ page.next_page_number }}&status=court"
+                           aria-label="Next">
+                            <span aria-hidden="true">Next</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+
+        </nav>
+
+    </div>
+
+{% endblock %}

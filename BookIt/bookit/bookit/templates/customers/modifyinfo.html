@@ -1,0 +1,145 @@
+<!--modify the information web in the individual center-->
+
+{% extends 'customers/index.html' %}
+<!--fill in the information to be modified after displaying different forms through different operations-->
+{% block content %}
+    {% if message %}
+        <div class="alert-warning container" align="center">{{ message }}</div>
+    {% endif %}
+    <!--modify name for a resource provider-->
+    {% if whatchange == "rp-name" %}
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <form action="/customer/changeinfo/">
+
+                        <h6>New Username: </h6>
+                        <input name="rp-name" class="form-control" required="required"><br><br>
+                        <div align="center">
+                            <button type="submit" class="btn btn-success">Rename</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+
+    {% endif %}
+    <!--modify name for a resource user-->
+    {% if whatchange == "rc-name" %}
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <form action="/customer/changeinfo/">
+
+                        <h6>New Username</h6>
+                        <input name="rc-name" class="form-control" required="required"><br><br>
+                        <div align="center">
+                            <button type="submit" class="btn btn-success">Rename</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    {% endif %}
+    <!--modify password for a resource provider-->
+    {% if whatchange == "rp-password" %}
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <form action="/customer/changeinfo/">
+                        <h6>New Password</h6>
+                        <input type="password" name="rp-password1" class="form-control" required="required">
+                        <h6>Password-confirm</h6>
+                        <input type="password" name="rp-password2" class="form-control" required="required"><br><br>
+                        <div align="center">
+                            <button type="submit" class="btn btn-success">Change Password</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    {% endif %}
+    <!--modify password for a resource user-->
+    {% if whatchange == "rc-password" %}
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <form action="/customer/changeinfo/">
+                        <h6>New Password</h6>
+                        <input type="password" name="rc-password1" class="form-control" required="required">
+                        <h6>Password-confirm</h6>
+                        <input type="password" name="rc-password2" class="form-control" required="required"><br><br>
+                        <div align="center">
+                            <button type="submit" class="btn btn-success">Change Password</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    {% endif %}
+    <!--modify phone for a resource user-->
+    {% if whatchange == "rc-phone" %}
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <form action="/customer/changeinfo/">
+
+                        <h6>New Phone Number</h6>
+                        <input name="rc-phone" class="form-control" required="required"><br><br>
+                        <div align="center">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    {% endif %}
+    <!--modify phone for a resource provider-->
+    {% if whatchange == "rp-phone" %}
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <form action="/customer/changeinfo/">
+
+                        <h6>New Phone Number</h6>
+                        <input name="rp-phone" class="form-control" required="required"><br><br>
+                        <div align="center">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    {% endif %}
+    <!--modify introduction for a resource provider-->
+    {% if whatchange == "rp-intro" %}
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <form action="/customer/changeinfo/">
+
+                        <h6>New Introduction</h6>
+                        <textarea name="rp-intro" class="form-control" required="required"></textarea><br><br>
+                        <div align="center">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

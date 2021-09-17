@@ -1,0 +1,112 @@
+<!--show resource information after clicking book button -->
+{% extends "customers/index.html" %}
+{% block title %}{{ court.CName }} Info{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+    <!--find wrong operation-->
+        {% if message %}
+            <div class="alert alert-warning" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+        <div class="card">
+        <!--load image-->
+            {% load static %}
+        <br>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                {% if court.isImage %}
+            <img src="{% static "image/" %}{{ court.id }}.png" width="500px" height="400px" class="card-img-top" alt="...">
+            {% else %}
+            <img src="{% static "image/" %}default.png" width="500px" height="400px" class="card-img-top" alt="...">
+            {% endif %}
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+            <div class="card-body">
+            <!--show the information of the resource-->
+                <h5 class="card-title">Venue Name: {{ court.CName }}</h5>
+                <p class="card-text">Venue Introduction: {{ court.CIntro }}</p>
+                <p class="card-text">Address : {{ court.CAddress }}</p>
+                <p class="card-text">Venue Score: {{ court.CStar }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <p class="card-text">Provider Name: {{ rp.RPName }}</p>
+                    <p class="card-text">Provider Phone Number: {{ rp.RPPhone }}</p>
+                    <p class="card-text">Provider Email: {{ rp.RPEmail }}</p>
+
+                    <p class="card-text">Provider Introduction: {{ rp.RPIntro }}</p>
+                </li>
+                <li class="list-group-item">
+                    <p class="card-text">Venue's Type Name: {{ ctype.TypeName }}</p>
+                </li>
+                <!--available booking time of the next 7 days-->
+                <li class="list-group-item">
+
+                    {#                        <ul>#}
+                    {#                        <li>#}
+                    {#                            <p class="card-text">Schedule: {{ time.Week }} {{ time.Hour }} {{ time.Available }}</p>#}
+                    {#                        </li>#}
+                    {#                        </ul>#}
+
+                    <form action="/customer/ordercourt/?CId={{ court.id }}" method="post">
+                        {% csrf_token %}
+
+                        {% for key,values in schedule_json.items %}
+                            {#                            {% if sj == 1 %}{% endif %}#}
+                            {#                            {% schedule_json.get(sj) %}#}
+
+                            <div class="border container">
+
+                                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseExample{{ key }}" aria-expanded="false"
+                                        aria-controls="collapseExample">
+                                    {{ key }}
+                                </button>
+
+                                <div class="collapse" id="collapseExample{{ key }}" style="diaplay:inline-block;float:left;">
+                                    <div style="float:left;">
+                                    <!--find all available time-->
+                                        {% for h in hour_range %}
+                                        <div style="display:inline;float:left;">
+                                            {% if h in values %}
+                                                <div class="{{h}}" >
+                                                <input class="form-check-input" type="checkbox" name="{{ key }}"
+                                                       value="{{ h }}">
+                                                <label class="text-primary"><p >{{ h }}:00-{{h|add:'1'}}:00</p></label>
+                                                </div>
+                                            {% else %}
+                                                <div class="{{h}}">
+
+                                                <input class="form-check-input" disabled type="checkbox"
+                                                       name="{{ key }}"
+                                                       value="{{ h }}">
+                                                <label class="text-muted">
+                                                    <p style="front-color:#C0C0C0 ; text-decoration:line-through;">{{ h }}:00-{{h|add:'1'}}:00</p>
+                                                      <!--<del></del>-->
+                                                 </label>
+                                                </div>
+                                            {% endif %}
+                                          </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+
+                                <br>
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </li>
+            </ul>
+            
+
+        </div>
+    </div>
+
+{% endblock %}

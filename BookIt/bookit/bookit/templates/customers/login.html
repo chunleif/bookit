@@ -1,0 +1,52 @@
+<!--login web-->
+{% extends 'customers/index.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div style="height: 70px"></div>
+            <div class="card shadow">
+                <div class="card-header text-center bg-dark">
+                    <h4 class="text-light card-title">Login</h4>
+                </div>
+                <div class="card-body">
+                    <!--find the wrong operation-->
+                    {% if message != '' %}
+                        <div class="alert alert-warning" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+                    <form action="/customer/login/" method="post">
+                        {% csrf_token %}
+                        {{ l_form }}
+                        <br>
+                        <!--forget password web link-->
+                        <div align="right"><a href="/customer/modifypassword/">Forget Password</a></div>
+                        <div class="text-center">
+                            <div align="left" style="float: left">
+                                <a href="/customer/preregister/">
+                                    <!--register web link-->
+                                    <button  type="button"  class="btn btn-outline-secondary"  align= "left">Register</button>
+                                </a>
+                            </div>
+                            <!--login in entrance-->
+                            <div align="center"><button type="submit" class="btn btn-outline-success">Submit</button></div>
+
+                            <div style="clear: both"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

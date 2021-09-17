@@ -1,0 +1,46 @@
+<!--show the order information after booking
+ purpose: re-display the resource information booked by the resourde user just now
+ -->
+{% extends "customers/index.html" %}
+{% block title %}Your Order Have Been Submit!{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+            <!--prompt information-->
+                <mark>Your Order Was Confirmed!</mark>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ court.CName }}</h5>
+                <div class="border">
+                <!--show the schedule -->
+                    <p class="card-text">Your Order Schedule:</p>
+                    {% for k,v in date_dict.items %}
+                    <!--format: Date hours-->
+                        <p class="card-text text-success">Date:{{ k }}</p><br>
+                        <p class="card-text  text-success">
+                        {% for i in v %}
+                            {{ i }}:00-{{ i|add:'1' }}:00&nbsp;&nbsp;
+                        {% endfor %}
+                        </p><br>
+                    {% endfor %}
+                </div>
+                <p class="card-text">Address: <mark>{{ court.CAddress }}</mark></p>
+                <p class="card-text">Venue Type: <mark>{{ typename }}</mark></p>
+                <p class="card-text">Score: <mark>{{ court.CStar }}</mark></p>
+                <p class="card-text">Introduction: <mark>{{ court.CIntro }}</mark> </p>
+                <p class="card-text">Venue Provider's Name: <mark>{{ RPUser.RPName }}</mark></p>
+                <p class="card-text">Venue Provider's Email: <mark>{{ RPUser.RPEmail }}</mark></p>
+                <p class="card-text">Venue Provider's Phone: <mark>{{ RPUser.RPPhone }}</mark></p>
+                <p class="card-text">Your remaining available time this month: <mark>{{ RCUser.permitHour }}</mark></p>
+                <p class="card-text">Your remaining available time next month: <mark>{{ RCUser.permitHour_nextMonth }}</mark></p>
+
+
+                <a href="/customer/homepage/" class="btn btn-primary">Go HomePage</a>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

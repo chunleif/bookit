@@ -1,0 +1,157 @@
+Cname,Ctype,CAddress,RPId,CIntro,CStar,Cstatus,id,Courtcap,Time,isimage
+rp1Ice Hockey,3,none,9900,no,5,1,3000,10,"9,20",0
+rp1Hockey,5,none,9900,no,5,1,3001,30,"9,20",0
+rp1Swimming,2,none,9900,no,1,1,3002,20,"9,20",0
+rp1Baseball,1,none,9900,no,4,1,3003,30,"9,20",0
+rp2Golf,8,none,9901,no,4,1,3004,40,"10,20",0
+rp2Ice Hockey,3,none,9901,no,3,1,3005,40,"10,20",0
+rp2Hockey,5,none,9901,no,5,1,3006,40,"10,20",0
+rp2Basketball,6,none,9901,no,4,1,3007,40,"10,20",0
+rp2Tennis,4,none,9901,no,5,1,3008,10,"10,20",0
+rp3Baseball,1,none,9902,no,2,1,3009,40,"9,22",0
+rp4Swimming,2,none,9903,no,2,1,3010,20,"9,20",0
+rp4Basketball,6,none,9903,no,1,1,3011,30,"9,20",0
+rp4Hockey,5,none,9903,no,4,1,3012,40,"9,20",0
+rp4Baseball,1,none,9903,no,5,1,3013,30,"9,20",0
+rp4Ice Hockey,3,none,9903,no,2,1,3014,10,"9,20",0
+rp5Hockey,5,none,9904,no,2,1,3015,40,"10,20",0
+rp5Golf,8,none,9904,no,5,1,3016,30,"10,20",0
+rp5Swimming,2,none,9904,no,2,1,3017,40,"10,20",0
+rp5Tennis,4,none,9904,no,4,1,3018,10,"10,20",0
+rp6Baseball,1,none,9905,no,3,1,3019,40,"9,20",0
+rp6Tennis,4,none,9905,no,2,1,3020,30,"9,20",0
+rp8Baseball,1,none,9907,no,2,1,3021,20,"10,20",0
+rp8Swimming,2,none,9907,no,1,1,3022,40,"10,20",0
+rp9Golf,8,none,9908,no,5,1,3023,10,"9,22",0
+rp9Hockey,5,none,9908,no,2,1,3024,10,"9,22",0
+rp10Swimming,2,none,9909,no,4,1,3025,30,"10,22",0
+rp10Basketball,6,none,9909,no,1,1,3026,10,"10,22",0
+rp10Golf,8,none,9909,no,1,1,3027,30,"10,22",0
+rp10Ice Hockey,3,none,9909,no,5,1,3028,20,"10,22",0
+rp12Ice Hockey,3,none,9911,no,3,1,3029,10,"10,22",0
+rp12Baseball,1,none,9911,no,3,1,3030,20,"10,22",0
+rp13Hockey,5,none,9912,no,1,1,3031,20,"10,22",0
+rp13Ice Hockey,3,none,9912,no,1,1,3032,30,"10,22",0
+rp13Mahjong,7,none,9912,no,5,1,3033,30,"10,22",0
+rp14Swimming,2,none,9913,no,2,1,3034,40,"9,22",0
+rp15Baseball,1,none,9914,no,5,1,3035,20,"9,20",0
+rp15Hockey,5,none,9914,no,3,1,3036,30,"9,20",0
+rp16Basketball,6,none,9915,no,4,1,3037,20,"9,20",0
+rp16Hockey,5,none,9915,no,5,1,3038,30,"9,20",0
+rp16Golf,8,none,9915,no,2,1,3039,30,"9,20",0
+rp16Tennis,4,none,9915,no,3,1,3040,20,"9,20",0
+rp16Baseball,1,none,9915,no,5,1,3041,10,"9,20",0
+rp16Swimming,2,none,9915,no,4,1,3042,30,"9,20",0
+rp16Ice Hockey,3,none,9915,no,3,1,3043,10,"9,20",0
+rp17Ice Hockey,3,none,9916,no,2,1,3044,40,"10,20",0
+rp17Basketball,6,none,9916,no,4,1,3045,20,"10,20",0
+rp17Baseball,1,none,9916,no,3,1,3046,30,"10,20",0
+rp17Swimming,2,none,9916,no,5,1,3047,20,"10,20",0
+rp17Tennis,4,none,9916,no,3,1,3048,10,"10,20",0
+rp17Mahjong,7,none,9916,no,3,1,3049,20,"10,20",0
+rp17Hockey,5,none,9916,no,3,1,3050,30,"10,20",0
+rp18Baseball,1,none,9917,no,4,1,3051,10,"11,23",0
+rp19Swimming,2,none,9918,no,2,1,3052,40,"10,20",0
+rp19Baseball,1,none,9918,no,4,1,3053,40,"10,20",0
+rp19Golf,8,none,9918,no,3,1,3054,30,"10,20",0
+rp20Ice Hockey,3,none,9919,no,5,1,3055,30,"10,22",0
+rp20Basketball,6,none,9919,no,1,1,3056,40,"10,22",0
+rp21Baseball,1,none,9920,no,2,1,3057,30,"11,23",0
+rp22Baseball,1,none,9921,no,2,1,3058,20,"10,22",0
+rp22Golf,8,none,9921,no,4,1,3059,10,"10,22",0
+rp22Ice Hockey,3,none,9921,no,2,1,3060,20,"10,22",0
+rp22Basketball,6,none,9921,no,5,1,3061,20,"10,22",0
+rp22Swimming,2,none,9921,no,5,1,3062,30,"10,22",0
+rp22Hockey,5,none,9921,no,2,1,3063,10,"10,22",0
+rp23Hockey,5,none,9922,no,2,1,3064,30,"9,22",0
+rp23Golf,8,none,9922,no,4,1,3065,10,"9,22",0
+rp23Tennis,4,none,9922,no,2,1,3066,40,"9,22",0
+rp23Ice Hockey,3,none,9922,no,2,1,3067,30,"9,22",0
+rp23Swimming,2,none,9922,no,3,1,3068,10,"9,22",0
+rp23Baseball,1,none,9922,no,4,1,3069,40,"9,22",0
+rp26Tennis,4,none,9925,no,5,1,3070,20,"9,22",0
+rp26Golf,8,none,9925,no,4,1,3071,30,"9,22",0
+rp26Basketball,6,none,9925,no,3,1,3072,10,"9,22",0
+rp27Tennis,4,none,9926,no,4,1,3073,10,"9,22",0
+rp27Golf,8,none,9926,no,1,1,3074,10,"9,22",0
+rp27Ice Hockey,3,none,9926,no,5,1,3075,30,"9,22",0
+rp27Swimming,2,none,9926,no,3,1,3076,20,"9,22",0
+rp28Ice Hockey,3,none,9927,no,5,1,3077,30,"9,20",0
+rp28Tennis,4,none,9927,no,3,1,3078,40,"9,20",0
+rp28Swimming,2,none,9927,no,1,1,3079,40,"9,20",0
+rp28Hockey,5,none,9927,no,2,1,3080,20,"9,20",0
+rp28Golf,8,none,9927,no,4,1,3081,10,"9,20",0
+rp28Basketball,6,none,9927,no,5,1,3082,30,"9,20",0
+rp30Ice Hockey,3,none,9929,no,4,1,3083,40,"9,20",0
+rp30Hockey,5,none,9929,no,4,1,3084,30,"9,20",0
+rp31Hockey,5,none,9930,no,1,1,3085,20,"11,23",0
+rp31Mahjong,7,none,9930,no,5,1,3086,20,"11,23",0
+rp31Golf,8,none,9930,no,1,1,3087,40,"11,23",0
+rp31Tennis,4,none,9930,no,1,1,3088,20,"11,23",0
+rp31Basketball,6,none,9930,no,3,1,3089,40,"11,23",0
+rp32Swimming,2,none,9931,no,4,1,3090,30,"9,20",0
+rp33Ice Hockey,3,none,9932,no,1,1,3091,40,"11,23",0
+rp33Golf,8,none,9932,no,1,1,3092,10,"11,23",0
+rp33Baseball,1,none,9932,no,2,1,3093,10,"11,23",0
+rp33Hockey,5,none,9932,no,4,1,3094,40,"11,23",0
+rp33Mahjong,7,none,9932,no,5,1,3095,30,"11,23",0
+rp33Basketball,6,none,9932,no,5,1,3096,10,"11,23",0
+rp34Golf,8,none,9933,no,5,1,3097,10,"10,22",0
+rp34Basketball,6,none,9933,no,4,1,3098,40,"10,22",0
+rp34Ice Hockey,3,none,9933,no,2,1,3099,20,"10,22",0
+rp34Swimming,2,none,9933,no,3,1,3100,40,"10,22",0
+rp35Golf,8,none,9934,no,1,1,3101,20,"11,23",0
+rp37Hockey,5,none,9936,no,5,1,3102,10,"11,23",0
+rp37Ice Hockey,3,none,9936,no,5,1,3103,20,"11,23",0
+rp38Baseball,1,none,9937,no,1,1,3104,40,"9,22",0
+rp38Golf,8,none,9937,no,2,1,3105,20,"9,22",0
+rp38Ice Hockey,3,none,9937,no,4,1,3106,10,"9,22",0
+rp39Basketball,6,none,9938,no,5,1,3107,20,"10,22",0
+rp39Tennis,4,none,9938,no,4,1,3108,40,"10,22",0
+rp39Mahjong,7,none,9938,no,1,1,3109,20,"10,22",0
+rp39Golf,8,none,9938,no,5,1,3110,10,"10,22",0
+rp39Swimming,2,none,9938,no,2,1,3111,10,"10,22",0
+rp39Hockey,5,none,9938,no,1,1,3112,30,"10,22",0
+rp40Tennis,4,none,9939,no,4,1,3113,10,"10,22",0
+rp40Hockey,5,none,9939,no,4,1,3114,20,"10,22",0
+rp41Mahjong,7,none,9940,no,3,1,3115,20,"10,22",0
+rp41Tennis,4,none,9940,no,4,1,3116,30,"10,22",0
+rp41Golf,8,none,9940,no,2,1,3117,30,"10,22",0
+rp42Swimming,2,none,9941,no,4,1,3118,10,"10,22",0
+rp42Ice Hockey,3,none,9941,no,5,1,3119,10,"10,22",0
+rp43Ice Hockey,3,none,9942,no,2,1,3120,20,"10,20",0
+rp43Mahjong,7,none,9942,no,4,1,3121,40,"10,20",0
+rp43Swimming,2,none,9942,no,3,1,3122,10,"10,20",0
+rp43Tennis,4,none,9942,no,4,1,3123,30,"10,20",0
+rp43Baseball,1,none,9942,no,5,1,3124,30,"10,20",0
+rp43Basketball,6,none,9942,no,3,1,3125,20,"10,20",0
+rp44Tennis,4,none,9943,no,4,1,3126,20,"10,20",0
+rp44Swimming,2,none,9943,no,4,1,3127,30,"10,20",0
+rp44Ice Hockey,3,none,9943,no,1,1,3128,40,"10,20",0
+rp44Hockey,5,none,9943,no,3,1,3129,40,"10,20",0
+rp45Baseball,1,none,9944,no,5,1,3130,30,"10,22",0
+rp45Basketball,6,none,9944,no,5,1,3131,40,"10,22",0
+rp45Mahjong,7,none,9944,no,4,1,3132,30,"10,22",0
+rp45Ice Hockey,3,none,9944,no,3,1,3133,30,"10,22",0
+rp45Tennis,4,none,9944,no,3,1,3134,20,"10,22",0
+rp46Basketball,6,none,9945,no,2,1,3135,30,"10,20",0
+rp46Hockey,5,none,9945,no,2,1,3136,40,"10,20",0
+rp47Mahjong,7,none,9946,no,4,1,3137,20,"10,20",0
+rp47Hockey,5,none,9946,no,4,1,3138,10,"10,20",0
+rp47Swimming,2,none,9946,no,4,1,3139,20,"10,20",0
+rp48Tennis,4,none,9947,no,5,1,3140,10,"9,20",0
+rp48Baseball,1,none,9947,no,2,1,3141,10,"9,20",0
+rp48Swimming,2,none,9947,no,3,1,3142,10,"9,20",0
+rp48Basketball,6,none,9947,no,5,1,3143,40,"9,20",0
+rp48Mahjong,7,none,9947,no,2,1,3144,40,"9,20",0
+rp48Golf,8,none,9947,no,4,1,3145,20,"9,20",0
+rp48Ice Hockey,3,none,9947,no,2,1,3146,10,"9,20",0
+rp49Tennis,4,none,9948,no,1,1,3147,20,"11,23",0
+rp49Hockey,5,none,9948,no,2,1,3148,10,"11,23",0
+rp49Mahjong,7,none,9948,no,3,1,3149,40,"11,23",0
+rp49Ice Hockey,3,none,9948,no,1,1,3150,20,"11,23",0
+rp49Swimming,2,none,9948,no,1,1,3151,40,"11,23",0
+rp49Basketball,6,none,9948,no,3,1,3152,20,"11,23",0
+rp50Tennis,4,none,9949,no,5,1,3153,20,"9,20",0
+rp50Ice Hockey,3,none,9949,no,1,1,3154,20,"9,20",0
+rp50Golf,8,none,9949,no,5,1,3155,40,"9,20",0

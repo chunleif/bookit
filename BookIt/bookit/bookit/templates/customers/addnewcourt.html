@@ -1,0 +1,31 @@
+<!--add new resources web for resource providers-->
+
+{% extends 'customers/index.html' %}
+
+{% block title %}Add New Court{% endblock %}
+
+<!--js file-->
+{% load static %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js" %}"></script>
+{% block content %}
+
+    <div class="container" >
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+        <!--use post to pass the information of the form to back-end-->
+            <form action="/customer/addnewcourt/" method="post">
+                {% csrf_token %}
+                {{ new }}
+                <div align="center">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+<!--navigation bar static web page-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid" style = "background-color:hsla(260,60%,75%);">
+        <a class="navbar-brand" href="/customer/homepage/"> 
+        <!--logo image-->
+        <img src="/static/image/logo_n.png" width="300px" height="100px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+      
+        <div class="navbar-nav" style="text-align: right;float: right">
+                {% if request.session.uname %}
+                    <!--individual center link-->
+                    <a class="nav-link" href="/customer/accountinfo/">
+                        Welcome ❤{{ request.session.uname }}
+                    </a>
+                    
+                    <!--logout link-->
+                    <a class="nav-link" href="/customer/logout/" tabindex="-1"style="bottom:0;">ヾ(￣▽￣)Logout~</a>
+                    &nbsp;&nbsp;&nbsp;
+                {% else %}
+                    <!--logout/register link-->
+                    <a class="nav-link" href="/customer/login/">
+                        Login/Register
+                    </a>
+                   &nbsp;&nbsp;&nbsp;
+                {% endif %}
+            </div>
+    </div>
+
+</nav> 

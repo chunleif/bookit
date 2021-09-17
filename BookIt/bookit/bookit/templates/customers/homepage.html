@@ -1,0 +1,55 @@
+<!--homepage web for resource users and provides (differnt display information)-->
+<meta name="referrer" content="no-referrer">
+{% extends 'customers/index.html' %}
+
+{% block title %}HOMEPAGE{% endblock %}
+
+{% block content %}
+    <div class="container" align="center" >
+        <!--for resource users-->
+        {% if utype != '0'  %}
+        <div style="display: flex; flex-wrap: wrap; justify-content: center">
+        <!--show all resource types-->
+            {% for ctype in ctypes %}
+                {#                {% imgurl = 'image/'+str(ctype.TypeName)+'.png' %}#}
+                <div class="card" style="width: 18rem">
+                    {% load static %}     <!--obtain image-->
+                    <img src='{% static "image/" %}{{ ctype.TypeName }}.png' width="250px" height="250px"
+                         class="card-img-top" alt="a picture">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ ctype.TypeName }}</h5>
+                        <p class="card-text">Available Venues Now: {{ ctype.TypeAvailable }}</p>
+                        <a href="/customer/showallcourt/?CType={{ ctype.id }}" class="btn btn-primary" style="background-color:#666; border:none;">Search
+                            All {{ ctype.TypeName }} Venues Here!</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <!--for resource providers-->
+            <div class="success"><h5>Welcome To BookIt, Please Click Your Individual Center To Manage Your Resources! ^_^⤴</h5></div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center"><br>
+        <!--show all resource types-->
+            {% for ctype in ctypes %}
+                {#                {% imgurl = 'image/'+str(ctype.TypeName)+'.png' %}#}
+                <div class="card" style="width: 18rem">
+                    {% load static %}     <!--obtain image-->
+                    <img src='{% static "image/" %}{{ ctype.TypeName }}.png' width="250px" height="250px"
+                         class="card-img-top" alt="a picture">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ ctype.TypeName }}</h5>
+                        <p class="card-text">Available Venues Now: {{ ctype.TypeAvailable }}</p>
+{#                        <a href="/customer/showallcourt/?CType={{ ctype.id }}" class="btn btn-primary" style="background-color:#666; border:none;">Search#}
+{#                            All {{ ctype.TypeName }} Venues Here!</a>#}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+
+{% endblock %}
+
+
+

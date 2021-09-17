@@ -1,0 +1,40 @@
+<!--register webpage after sending email-->
+{% extends 'customers/index.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div style="height: 70px"></div>
+            <div class="card shadow">
+                <div class="card-header text-center bg-dark">
+                    <h4 class="text-light card-title">Register</h4>
+                </div>
+                <div class="card-body">
+                <!--find wrong operation-->
+                    {% if message %}
+                        <div class="alert alert-warning" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+                    <form action="/customer/register/" method="post">
+                        {% csrf_token %}
+                        {{ r_form }}
+
+                        <br>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+{% endblock %}
